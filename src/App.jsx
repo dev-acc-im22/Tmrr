@@ -533,6 +533,362 @@ function AdvertisePage({ onClose }) {
   );
 }
 
+function SellStartupsPage({ onClose }) {
+  const [goal, setGoal] = useState("Strategic exit");
+  const [timeline, setTimeline] = useState("90 days");
+  const [revenueBand, setRevenueBand] = useState("$10k - $50k MRR");
+
+  const playbook = [
+    {
+      title: "Prepare your listing",
+      detail: "Add verified MRR, growth trends, and operations notes so buyers can evaluate your startup quickly.",
+      Icon: CheckCircle2,
+    },
+    {
+      title: "Get expert pricing support",
+      detail: "Use RealMRR data benchmarks to choose a valuation range that attracts qualified offers.",
+      Icon: TrendingUp,
+    },
+    {
+      title: "Meet serious buyers",
+      detail: "Share with high-intent acquirers, protect confidentiality, and move to signed LOI faster.",
+      Icon: Shield,
+    },
+  ];
+
+  return (
+    <section className="pt-4 sm:pt-8">
+      <div className="overflow-hidden rounded-[26px] border border-[#6a4060]/70 bg-[linear-gradient(180deg,rgba(23,14,27,0.9)_0%,rgba(17,12,23,0.95)_100%)] shadow-[0_0_0_1px_rgba(221,157,191,0.12),0_24px_70px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,214,234,0.12)] backdrop-blur-xl">
+        <div className="border-b border-[#52354a] p-5 sm:p-6">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <button
+              type="button"
+              onClick={onClose}
+              className="inline-flex items-center gap-2 rounded-lg border border-[#744f68] bg-[#2a1d2a] px-3 py-1.5 text-xs font-semibold text-[#f7dceb] transition hover:border-[#9f6f8f] hover:text-white"
+            >
+              <ArrowLeft size={13} />
+              Back to home
+            </button>
+
+            <a
+              href="https://acquire.com/sellers/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-[#68465d] bg-[#251a26] px-3 py-1.5 text-xs text-[#f0cade] transition hover:border-[#9a6f88] hover:text-white"
+            >
+              Seller playbook
+              <ExternalLink size={12} />
+            </a>
+          </div>
+
+          <div className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.08em] text-[#ff9bc8]">RealMRR Sellers</p>
+              <h1 className="mt-2 text-[clamp(1.7rem,3.4vw,2.8rem)] font-bold leading-[1.08] text-white">
+                Sell your startup with confidence and verified traction.
+              </h1>
+              <p className="mt-3 max-w-[760px] text-sm leading-6 text-[#e7c8d9] sm:text-base">
+                Built for founders who want a clean process: prepare your numbers, launch a premium listing, and connect with
+                qualified buyers without wasting months on low-intent conversations.
+              </p>
+            </div>
+
+            <aside className="rounded-xl border border-[#704964] bg-[linear-gradient(160deg,#331f34_0%,#291a2c_100%)] p-4 shadow-[inset_0_0_0_1px_rgba(255,203,225,0.1)]">
+              <p className="text-[11px] uppercase tracking-[0.08em] text-[#ffc5df]">Seller Snapshot</p>
+              <div className="mt-4 grid gap-3">
+                <article className="rounded-lg border border-[#7a5670] bg-[#2a1d2a] p-3">
+                  <p className="text-[11px] text-[#f0c5da]">Active buyer pool</p>
+                  <p className="mt-1 text-2xl font-bold text-white">500k+</p>
+                </article>
+                <article className="rounded-lg border border-[#7a5670] bg-[#2a1d2a] p-3">
+                  <p className="text-[11px] text-[#f0c5da]">Typical close window</p>
+                  <p className="mt-1 text-2xl font-bold text-white">90 days</p>
+                </article>
+                <article className="rounded-lg border border-[#7a5670] bg-[#2a1d2a] p-3">
+                  <p className="text-[11px] text-[#f0c5da]">Support model</p>
+                  <p className="mt-1 text-2xl font-bold text-white">1:1 guidance</p>
+                </article>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+        <div className="grid gap-4 p-4 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+          <section className="rounded-xl border border-[#61425a] bg-[#231727]/85 p-4">
+            <h3 className="text-lg font-semibold text-white">How selling on RealMRR works</h3>
+            <div className="mt-4 grid gap-3">
+              {playbook.map(({ title, detail, Icon }) => (
+                <article key={title} className="rounded-lg border border-[#76566f] bg-[#2d1f30] p-3">
+                  <p className="inline-flex items-center gap-2 text-sm font-semibold text-[#ffe5f1]">
+                    <Icon size={14} className="text-[#ff9fcd]" />
+                    {title}
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-[#edccdd]">{detail}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="rounded-xl border border-[#61425a] bg-[#231727]/85 p-4">
+            <h3 className="text-lg font-semibold text-white">Seller onboarding setup</h3>
+            <div className="mt-4 space-y-3 text-sm">
+              <label className="block">
+                <span className="mb-1.5 block text-[#efc5da]">Goal</span>
+                <select
+                  value={goal}
+                  onChange={(event) => setGoal(event.target.value)}
+                  className="w-full rounded-lg border border-[#815c76] bg-[#311f33] px-3 py-2 text-[#ffe8f2] outline-none focus:border-[#d58ab4]"
+                >
+                  {[
+                    "Strategic exit",
+                    "Partial sale",
+                    "Lifestyle handoff",
+                    "Growth-stage acquisition",
+                  ].map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="block">
+                <span className="mb-1.5 block text-[#efc5da]">Preferred timeline</span>
+                <select
+                  value={timeline}
+                  onChange={(event) => setTimeline(event.target.value)}
+                  className="w-full rounded-lg border border-[#815c76] bg-[#311f33] px-3 py-2 text-[#ffe8f2] outline-none focus:border-[#d58ab4]"
+                >
+                  {["30 days", "60 days", "90 days", "Flexible"].map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="block">
+                <span className="mb-1.5 block text-[#efc5da]">Revenue band</span>
+                <select
+                  value={revenueBand}
+                  onChange={(event) => setRevenueBand(event.target.value)}
+                  className="w-full rounded-lg border border-[#815c76] bg-[#311f33] px-3 py-2 text-[#ffe8f2] outline-none focus:border-[#d58ab4]"
+                >
+                  {[
+                    "Below $10k MRR",
+                    "$10k - $50k MRR",
+                    "$50k - $200k MRR",
+                    "$200k+ MRR",
+                  ].map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+
+            <div className="mt-4 rounded-lg border border-[#7a5670] bg-[#2a1d2a] p-3 text-xs text-[#f1cbdf]">
+              <p className="inline-flex items-center gap-1.5">
+                <Users size={12} />
+                Get matched to buyers based on your selected profile.
+              </p>
+              <p className="mt-2 inline-flex items-center gap-1.5">
+                <CalendarDays size={12} />
+                Median first qualified call booked in under 7 days.
+              </p>
+              <p className="mt-2 inline-flex items-center gap-1.5">
+                <Clock3 size={12} />
+                Review offers with guided negotiation support.
+              </p>
+            </div>
+          </section>
+        </div>
+
+        <div className="border-t border-[#52354a] px-5 py-4 sm:px-6">
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#6e4963] bg-[#261b29] px-4 py-3">
+            <p className="text-sm text-[#f1cfe0]">Ready to list? Start seller onboarding and receive your valuation framework.</p>
+            <div className="flex flex-wrap items-center gap-2">
+              <button
+                type="button"
+                className="rounded-lg border border-[#ffbfdc]/90 bg-[linear-gradient(120deg,#f28ca8_0%,#e15abd_50%,#9856ff_100%)] px-3.5 py-2 text-xs font-semibold text-white transition hover:brightness-110"
+              >
+                Start seller onboarding
+              </button>
+              <button
+                type="button"
+                className="rounded-lg border border-[#7d5872] bg-[#312235] px-3.5 py-2 text-xs font-semibold text-[#ffdff0] transition hover:border-[#b987a8] hover:text-white"
+              >
+                Book valuation call
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+function BuyStartupsPage({ onClose, listings, onSelectStartup }) {
+  const sectors = ["All", "SaaS", "AI", "Fintech", "Developer Tools", "Marketing", "E-commerce"];
+  const [activeSector, setActiveSector] = useState("All");
+
+  const filteredListings = useMemo(() => {
+    if (activeSector === "All") return listings;
+    return listings.filter((item) => item.category === activeSector);
+  }, [activeSector, listings]);
+
+  const displayListings = filteredListings.slice(0, 12);
+
+  const medianMrr = useMemo(() => {
+    if (!filteredListings.length) return "$0";
+    const sorted = filteredListings
+      .map((item) => parseMoney(item.revenue || item.price || item.mrr || "$0"))
+      .sort((a, b) => a - b);
+    const mid = Math.floor(sorted.length / 2);
+    const value = sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+    return formatMoney(value);
+  }, [filteredListings]);
+
+  const averageMultiple = useMemo(() => {
+    const values = filteredListings
+      .map((item) => Number.parseFloat(String(item.multiple || "").replace(/[^0-9.]/g, "")))
+      .filter((value) => Number.isFinite(value));
+
+    if (!values.length) return "3.2x";
+    const avg = values.reduce((sum, value) => sum + value, 0) / values.length;
+    return `${avg.toFixed(1)}x`;
+  }, [filteredListings]);
+
+  return (
+    <section className="pt-4 sm:pt-8">
+      <div className="overflow-hidden rounded-[26px] border border-[#314467]/80 bg-[linear-gradient(180deg,rgba(17,25,40,0.86)_0%,rgba(10,15,25,0.92)_100%)] shadow-[0_0_0_1px_rgba(131,171,235,0.2),0_24px_70px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(185,217,255,0.18)] backdrop-blur-xl">
+        <div className="border-b border-[#24324a] p-5 sm:p-6">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <button
+              type="button"
+              onClick={onClose}
+              className="inline-flex items-center gap-2 rounded-lg border border-[#334769] bg-[#121b2b] px-3 py-1.5 text-xs font-semibold text-[#c6dcff] transition hover:border-[#4d6ea1] hover:text-white"
+            >
+              <ArrowLeft size={13} />
+              Back to home
+            </button>
+
+            <a
+              href="https://help.acquire.com/how-to-sign-up-on-acquire.com"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-[#2f3f5c] bg-[#101829] px-3 py-1.5 text-xs text-[#b9caea] transition hover:border-[#4f6fa8] hover:text-white"
+            >
+              Buyer guide
+              <ExternalLink size={12} />
+            </a>
+          </div>
+
+          <div className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.08em] text-[#7fb6ff]">RealMRR Buyers</p>
+              <h1 className="mt-2 text-[clamp(1.7rem,3.5vw,2.8rem)] font-bold leading-[1.08] text-white">
+                Buy profitable startups with verified recurring revenue.
+              </h1>
+              <p className="mt-3 max-w-[740px] text-sm leading-6 text-[#9cb0d1] sm:text-base">
+                Inspired by modern acquisition marketplaces, but built for transparent MRR-first deals. Browse vetted businesses,
+                compare performance snapshots, and connect with founders in minutes.
+              </p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {sectors.map((sector) => {
+                  const active = sector === activeSector;
+                  return (
+                    <button
+                      key={sector}
+                      type="button"
+                      onClick={() => setActiveSector(sector)}
+                      className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
+                        active
+                          ? "border-[#4f7be0] bg-[#1a2a49] text-[#d6e5ff]"
+                          : "border-[#2e3c56] bg-[#101726] text-[#9db2d6] hover:border-[#446293] hover:text-[#d6e5ff]"
+                      }`}
+                    >
+                      {sector}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <aside className="rounded-xl border border-[#2d3d59] bg-[linear-gradient(160deg,#132037_0%,#0f1a2d_100%)] p-4 shadow-[inset_0_0_0_1px_rgba(120,162,235,0.1)]">
+              <p className="text-[11px] uppercase tracking-[0.08em] text-[#8fb5f2]">Marketplace Snapshot</p>
+              <div className="mt-4 grid gap-3">
+                <article className="rounded-lg border border-[#324766] bg-[#101b2e] p-3">
+                  <p className="text-[11px] text-[#8ea9d5]">Live listings</p>
+                  <p className="mt-1 text-2xl font-bold text-white">{filteredListings.length.toLocaleString()}</p>
+                </article>
+                <article className="rounded-lg border border-[#324766] bg-[#101b2e] p-3">
+                  <p className="text-[11px] text-[#8ea9d5]">Median MRR</p>
+                  <p className="mt-1 text-2xl font-bold text-white">{medianMrr}</p>
+                </article>
+                <article className="rounded-lg border border-[#324766] bg-[#101b2e] p-3">
+                  <p className="text-[11px] text-[#8ea9d5]">Avg. revenue multiple</p>
+                  <p className="mt-1 text-2xl font-bold text-white">{averageMultiple}</p>
+                </article>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+        <div className="grid gap-3 p-4 sm:grid-cols-2 xl:grid-cols-3">
+          {displayListings.map((item, idx) => (
+            <article
+              key={`${item.name}-${item.category}-${idx}`}
+              className="rounded-xl border border-[#2a3751] bg-[#101623] p-4 shadow-[0_8px_20px_rgba(0,0,0,0.25)]"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="truncate text-base font-semibold text-[#eef4ff]">{item.name}</p>
+                  <p className="mt-1 truncate text-xs text-[#9cb0d1]">{item.niche || "Profitable internet business"}</p>
+                </div>
+                <span className="rounded-md border border-[#355080] bg-[#16233b] px-2 py-1 text-[10px] font-semibold text-[#aaccff]">
+                  {item.category || "SaaS"}
+                </span>
+              </div>
+
+              <div className="mt-4 grid grid-cols-2 gap-2 text-xs">
+                <div className="rounded-lg border border-[#273349] bg-[#0c1321] p-2.5">
+                  <p className="text-[#7f95bc]">MRR</p>
+                  <p className="mt-1 font-semibold text-[#e8f0ff]">{item.revenue || item.price || "$0"}</p>
+                </div>
+                <div className="rounded-lg border border-[#273349] bg-[#0c1321] p-2.5">
+                  <p className="text-[#7f95bc]">Multiple</p>
+                  <p className="mt-1 font-semibold text-[#e8f0ff]">{item.multiple || "3.0x"}</p>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => onSelectStartup?.(item)}
+                className="mt-4 inline-flex w-full items-center justify-center rounded-lg border border-[#4e79c8] bg-[linear-gradient(120deg,#1c6dff_0%,#3c86ff_48%,#34c9bf_100%)] px-3 py-2 text-sm font-semibold text-white transition hover:brightness-110"
+              >
+                View startup
+              </button>
+            </article>
+          ))}
+        </div>
+
+        <div className="border-t border-[#24324a] px-5 py-4 sm:px-6">
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#2f3f5f] bg-[#10192a] px-4 py-3">
+            <p className="text-sm text-[#afc2e2]">Need a better fit? Set your criteria and get new listings in your inbox.</p>
+            <button
+              type="button"
+              className="rounded-lg border border-[#476cae] bg-[#152642] px-3.5 py-2 text-xs font-semibold text-[#d3e3ff] transition hover:border-[#6f93d3] hover:text-white"
+            >
+              Create buyer profile
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 function DirectoryFooter({ isLight, theme, setTheme, onSelectCategory, activeCategory }) {
   return (
     <>
@@ -776,6 +1132,186 @@ function CategoryResults({ category, items, onBack, onSelectStartup }) {
     </section>
   );
 }
+function PodiumSection({ rows }) {
+  const topThree = rows.slice(0, 3);
+  if (topThree.length < 3) return null;
+
+  const podium = [
+    { position: 2, startup: topThree[1] },
+    { position: 1, startup: topThree[0] },
+    { position: 3, startup: topThree[2] },
+  ];
+
+  const placeLabels = {
+    1: "1st Place",
+    2: "2nd Place",
+    3: "3rd Place",
+  };
+
+  const cupPalette = {
+    1: {
+      metalTop: "#fff6c9",
+      metalMid: "#f4c44e",
+      metalDeep: "#9c5d05",
+      edge: "#f7d06e",
+      glow: "rgba(255, 197, 76, 0.55)",
+    },
+    2: {
+      metalTop: "#f9fcff",
+      metalMid: "#d7dfea",
+      metalDeep: "#7f8ba1",
+      edge: "#e5ebf5",
+      glow: "rgba(197, 214, 240, 0.45)",
+    },
+    3: {
+      metalTop: "#ffe0c2",
+      metalMid: "#d79a5f",
+      metalDeep: "#87431a",
+      edge: "#efb47e",
+      glow: "rgba(217, 147, 93, 0.42)",
+    },
+  };
+
+  const podiumTone = {
+    1: "h-32 sm:h-40 border-[#bb7a38] bg-[linear-gradient(180deg,#8a0f1d_0%,#6f0a18_45%,#4c0510_100%)]",
+    2: "h-24 sm:h-32 border-[#a16d32] bg-[linear-gradient(180deg,#7d0d1a_0%,#5c0814_45%,#3c040c_100%)]",
+    3: "h-20 sm:h-28 border-[#9a6830] bg-[linear-gradient(180deg,#750c18_0%,#520710_45%,#34030a_100%)]",
+  };
+
+  const RoyalCup = ({ position }) => {
+    const tone = cupPalette[position];
+    const metalId = `royal-cup-metal-${position}`;
+    const rimId = `royal-cup-rim-${position}`;
+    const stemId = `royal-cup-stem-${position}`;
+    const baseId = `royal-cup-base-${position}`;
+    const glossId = `royal-cup-gloss-${position}`;
+    const glowId = `royal-cup-glow-${position}`;
+
+    return (
+      <svg viewBox="0 0 260 220" className="h-full w-full" role="presentation" aria-hidden="true">
+        <defs>
+          <linearGradient id={metalId} x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.96" />
+            <stop offset="10%" stopColor={tone.metalTop} />
+            <stop offset="46%" stopColor={tone.metalMid} />
+            <stop offset="78%" stopColor={tone.metalDeep} />
+            <stop offset="100%" stopColor="#1f1303" stopOpacity="0.55" />
+          </linearGradient>
+          <radialGradient id={rimId} cx="50%" cy="24%" r="86%">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.82" />
+            <stop offset="42%" stopColor={tone.metalTop} />
+            <stop offset="100%" stopColor={tone.metalDeep} />
+          </radialGradient>
+          <linearGradient id={stemId} x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.84" />
+            <stop offset="34%" stopColor={tone.metalTop} />
+            <stop offset="65%" stopColor={tone.metalMid} />
+            <stop offset="100%" stopColor={tone.metalDeep} />
+          </linearGradient>
+          <linearGradient id={baseId} x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.7" />
+            <stop offset="22%" stopColor={tone.metalTop} />
+            <stop offset="68%" stopColor={tone.metalMid} />
+            <stop offset="100%" stopColor={tone.metalDeep} />
+          </linearGradient>
+          <linearGradient id={glossId} x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.85" />
+            <stop offset="45%" stopColor="#ffffff" stopOpacity="0.15" />
+            <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+          </linearGradient>
+          <filter id={glowId} x="-60%" y="-60%" width="220%" height="220%">
+            <feDropShadow dx="0" dy="7" stdDeviation="5" floodColor={tone.glow} floodOpacity="0.52" />
+            <feDropShadow dx="0" dy="1" stdDeviation="1.6" floodColor="#ffffff" floodOpacity="0.3" />
+          </filter>
+        </defs>
+
+        <ellipse cx="130" cy="192" rx="78" ry="12" fill={tone.glow} opacity="0.28" />
+
+        <g filter={`url(#${glowId})`}>
+          <path
+            d="M66 56 H194 C188 100 164 128 130 133 C96 128 72 100 66 56 Z"
+            fill={`url(#${metalId})`}
+            stroke={tone.edge}
+            strokeWidth="3.2"
+          />
+
+          <ellipse cx="130" cy="56" rx="64" ry="15" fill={`url(#${rimId})`} stroke={tone.edge} strokeWidth="2.6" />
+          <path d="M82 60 C92 86 108 99 130 103 C152 99 168 86 178 60" fill="none" stroke="#ffffff" strokeOpacity="0.22" strokeWidth="5" />
+
+          <path
+            d="M79 52 C55 52 45 76 56 94 C64 106 79 110 96 99"
+            fill="none"
+            stroke={`url(#${stemId})`}
+            strokeWidth="8"
+            strokeLinecap="round"
+          />
+          <path
+            d="M181 52 C205 52 215 76 204 94 C196 106 181 110 164 99"
+            fill="none"
+            stroke={`url(#${stemId})`}
+            strokeWidth="8"
+            strokeLinecap="round"
+          />
+
+          <path
+            d="M98 58 C106 48 118 42 130 42 C142 42 154 48 162 58"
+            fill="none"
+            stroke={`url(#${glossId})`}
+            strokeWidth="4"
+            strokeLinecap="round"
+            opacity="0.65"
+          />
+
+          <rect x="118" y="133" width="24" height="25" rx="6" fill={`url(#${stemId})`} stroke={tone.edge} strokeWidth="2.1" />
+          <rect x="101" y="156" width="58" height="16" rx="5" fill={`url(#${baseId})`} stroke={tone.edge} strokeWidth="2.1" />
+          <rect x="88" y="172" width="84" height="19" rx="5" fill={`url(#${baseId})`} stroke={tone.edge} strokeWidth="2.1" />
+
+          <rect x="108" y="83" width="44" height="25" rx="12.5" fill="#ffffff" fillOpacity="0.1" stroke="#ffffff" strokeOpacity="0.2" />
+          <circle cx="130" cy="95.5" r="6" fill={`url(#${rimId})`} opacity="0.9" />
+        </g>
+      </svg>
+    );
+  };
+
+  return (
+    <section className="mt-10 rounded-2xl border border-[#4b3550] bg-[radial-gradient(circle_at_50%_8%,rgba(220,170,89,0.18)_0%,rgba(39,24,44,0.92)_45%,rgba(18,11,22,0.98)_100%)] p-4 shadow-[0_22px_58px_rgba(0,0,0,0.5)] sm:p-6">
+      <div className="mb-5 flex items-center justify-between gap-2">
+        <h3 className="text-[clamp(1.08rem,1.35vw,1.32rem)] font-bold text-[#f8f2e8]">Startup Winners Podium</h3>
+        <span className="rounded-full border border-[#8f6d35] bg-[#2e2118] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#efd3a2]">
+          royal top 3
+        </span>
+      </div>
+
+      <div className="rounded-2xl border border-[#5a3d30] bg-[linear-gradient(180deg,rgba(28,18,20,0.92)_0%,rgba(16,10,12,0.96)_100%)] px-3 pb-4 pt-6 shadow-[inset_0_1px_0_rgba(255,216,153,0.12),inset_0_-1px_0_rgba(123,60,20,0.2)] sm:px-5 sm:pb-6">
+        <div className="grid grid-cols-3 items-end gap-2 sm:gap-5">
+          {podium.map(({ position, startup }) => (
+            <article
+              key={`${position}-${startup.startup}`}
+              className={`flex h-full w-full flex-col items-center justify-end ${position === 1 ? "sm:-translate-y-2" : ""}`}
+            >
+              <div className="mb-2 h-24 w-28 sm:h-28 sm:w-32">
+                <RoyalCup position={position} />
+              </div>
+
+              <p className="max-w-[12ch] truncate text-center text-[clamp(1.15rem,1.95vw,1.72rem)] font-black tracking-[-0.015em] text-[#fffaf2] [text-shadow:0_2px_12px_rgba(0,0,0,0.35)]">
+                {startup.startup}
+              </p>
+              <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#ebc48f]">{placeLabels[position]}</p>
+
+              <div className={`relative w-full max-w-[220px] rounded-t-xl border ${podiumTone[position]} grid place-content-center overflow-hidden`}>
+                <div className="absolute inset-x-0 top-0 h-10 bg-[linear-gradient(180deg,rgba(255,224,168,0.2)_0%,rgba(255,224,168,0)_100%)]" />
+                <div className="absolute inset-x-0 bottom-0 h-[2px] bg-[linear-gradient(90deg,rgba(247,196,112,0)_0%,rgba(247,196,112,0.9)_50%,rgba(247,196,112,0)_100%)]" />
+                <span className="relative text-[clamp(2rem,4vw,3.2rem)] font-black text-[#f4ca78] [text-shadow:0_2px_0_rgba(96,47,0,0.9)]">
+                  {position}
+                </span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 function Section({ title, items, onSelectStartup }) {
   const rowRef = useRef(null);
   const dragRef = useRef({ active: false, startX: 0, startScrollLeft: 0, moved: false, lastDragAt: 0 });
@@ -897,6 +1433,12 @@ export default function App() {
   const [isAdvertisePage, setIsAdvertisePage] = useState(() =>
     typeof window !== "undefined" ? window.location.hash === "#advertise" : false
   );
+  const [isSellStartupPage, setIsSellStartupPage] = useState(() =>
+    typeof window !== "undefined" ? window.location.hash === "#sell-startups" : false
+  );
+  const [isBuyStartupsPage, setIsBuyStartupsPage] = useState(() =>
+    typeof window !== "undefined" ? window.location.hash === "#buy-startups" : false
+  );
   const isLight = theme === "light";
 
   useEffect(() => {
@@ -909,6 +1451,8 @@ export default function App() {
       const hash = window.location.hash;
       setIsAddStartupPage(hash === "#add-startup");
       setIsAdvertisePage(hash === "#advertise");
+      setIsSellStartupPage(hash === "#sell-startups");
+      setIsBuyStartupsPage(hash === "#buy-startups");
     };
     window.addEventListener("hashchange", onHashChange);
     return () => window.removeEventListener("hashchange", onHashChange);
@@ -930,6 +1474,8 @@ export default function App() {
     setSelectedCategory(null);
     setIsAddStartupPage(false);
     setIsAdvertisePage(false);
+    setIsSellStartupPage(false);
+    setIsBuyStartupsPage(false);
     setSelectedStartup(startup);
   };
 
@@ -937,9 +1483,46 @@ export default function App() {
     setSelectedStartup(null);
     setSelectedCategory(null);
     setIsAddStartupPage(false);
+    setIsSellStartupPage(false);
+    setIsBuyStartupsPage(false);
     setIsAdvertisePage(true);
     window.location.hash = "advertise";
   };
+
+  const openBuyStartupsPage = () => {
+    setSelectedStartup(null);
+    setSelectedCategory(null);
+    setIsAddStartupPage(false);
+    setIsAdvertisePage(false);
+    setIsSellStartupPage(false);
+    setIsBuyStartupsPage(true);
+    window.location.hash = "buy-startups";
+  };
+
+  const openSellStartupPage = () => {
+    setSelectedStartup(null);
+    setSelectedCategory(null);
+    setIsAddStartupPage(false);
+    setIsAdvertisePage(false);
+    setIsBuyStartupsPage(false);
+    setIsSellStartupPage(true);
+    window.location.hash = "sell-startups";
+  };
+  const sponsorTileCount = leftFeatures.length + rightFeatures.length;
+  const [activeSponsorTile, setActiveSponsorTile] = useState(0);
+  const [sponsorFlipStep, setSponsorFlipStep] = useState(0);
+
+  useEffect(() => {
+    setActiveSponsorTile(0);
+    setSponsorFlipStep((prev) => prev + 1);
+
+    const interval = setInterval(() => {
+      setActiveSponsorTile((prev) => (prev + 1) % sponsorTileCount);
+      setSponsorFlipStep((prev) => prev + 1);
+    }, 1300);
+
+    return () => clearInterval(interval);
+  }, [sponsorTileCount]);
 
   const allStartupCards = useMemo(() => {
     const listRows = leaderboard.slice(0, 60).map((row) => ({
@@ -970,7 +1553,12 @@ export default function App() {
       <div className="mx-auto max-w-[1720px] px-4 pb-10 pt-6 lg:h-full lg:pt-8">
         <div className="grid grid-cols-1 items-start gap-6 lg:h-full lg:grid-cols-[180px_minmax(0,1fr)_180px] xl:grid-cols-[200px_minmax(0,1fr)_200px]">
           <aside className="order-2 grid gap-2.5 sm:grid-cols-2 lg:order-1 lg:sticky lg:top-2 lg:max-h-[calc(100vh-1rem)] lg:grid-cols-1 lg:overflow-hidden">
-            {leftFeatures.map((feature) => (
+            <div className="sm:col-span-2 lg:col-span-1">
+                <p className="rounded-xl border border-[#3b4f74]/80 bg-[linear-gradient(110deg,rgba(22,33,52,0.85)_0%,rgba(13,22,36,0.88)_100%)] px-3 py-2 text-center text-[10px] font-semibold tracking-[0.08em] text-[#9fbef0] shadow-[inset_0_0_0_1px_rgba(151,187,245,0.12)]">
+                  SPONSORS OF THE DAY
+                </p>
+              </div>
+            {leftFeatures.map((feature, index) => (
               <SidebarCard
                 key={feature.title}
                 title={feature.title}
@@ -978,6 +1566,8 @@ export default function App() {
                 tone={feature.tone}
                 icon={feature.icon}
                 rotations={feature.rotations}
+                disableAutoFlip
+                flipSignal={activeSponsorTile === index ? sponsorFlipStep : undefined}
                 onSelect={(entry) => openStartup(entry)}
               />
             ))}
@@ -998,6 +1588,22 @@ export default function App() {
                   setIsAdvertisePage(false);
                 }}
               />
+                        ) : isSellStartupPage ? (
+              <SellStartupsPage
+                onClose={() => {
+                  window.history.pushState("", document.title, window.location.pathname + window.location.search);
+                  setIsSellStartupPage(false);
+                }}
+              />
+            ) : isBuyStartupsPage ? (
+              <BuyStartupsPage
+                listings={allStartupCards}
+                onSelectStartup={openStartup}
+                onClose={() => {
+                  window.history.pushState("", document.title, window.location.pathname + window.location.search);
+                  setIsBuyStartupsPage(false);
+                }}
+              />
             ) : profile ? (
               <StartupDetail
                 profile={profile}
@@ -1015,11 +1621,32 @@ export default function App() {
             ) : (
               <>
                 <section className="pb-5 pt-4 text-center sm:pt-8 lg:pt-10">
-                  <div className="inline-flex items-center gap-2 text-[clamp(1.45rem,1.7vw,1.9rem)] font-bold">
-                    <CheckCircle2 className="text-[#22c55e]" size={38} strokeWidth={2.5} />
-                    <span className={isLight ? "text-[#1f2937]" : "text-gray-300"}>RealMRR</span>
-                  </div>
+                  <div className="mx-auto mb-5 flex w-full max-w-[980px] flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#3b5075]/85 bg-[linear-gradient(130deg,rgba(10,16,28,0.9)_0%,rgba(8,13,24,0.94)_100%)] px-4 py-3 shadow-[0_0_0_1px_rgba(141,173,230,0.24),0_22px_54px_rgba(0,0,0,0.62),inset_0_1px_0_rgba(201,221,255,0.15)] backdrop-blur-xl sm:flex-nowrap">
+                    <div className="inline-flex items-center gap-2 text-[clamp(1.25rem,1.4vw,1.65rem)] font-bold">
+                      <CheckCircle2 className="text-[#22c55e]" size={34} strokeWidth={2.5} />
+                      <span className={isLight ? "text-[#1f2937]" : "text-gray-300"}>RealMRR</span>
+                    </div>
 
+                    <div className="flex flex-wrap items-center justify-end gap-3">
+                      <button
+                        type="button"
+                        onClick={openBuyStartupsPage}
+                        className="group relative overflow-hidden rounded-2xl border border-[#bcecff]/85 bg-[linear-gradient(120deg,#1cb2ff_0%,#3d7dff_50%,#34d7c8_100%)] px-6 py-2.5 text-[clamp(0.95rem,1vw,1.05rem)] font-extrabold text-white shadow-[0_0_0_1px_rgba(142,222,255,0.45),0_4px_14px_rgba(58,160,255,0.22)] transition duration-200 hover:-translate-y-0.5 hover:brightness-110"
+                      >
+                        <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.38)_0%,transparent_55%)] opacity-80" />
+                        <span className="relative">Buy Profitable Startups</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={openSellStartupPage}
+                        className="group relative overflow-hidden rounded-2xl border border-[#ffd7b8]/85 bg-[linear-gradient(120deg,#ff9a7a_0%,#ec5bb8_48%,#8f55ff_100%)] px-6 py-2.5 text-[clamp(0.95rem,1vw,1.05rem)] font-extrabold text-white shadow-[0_0_0_1px_rgba(255,183,140,0.4),0_4px_14px_rgba(215,88,175,0.22)] transition duration-200 hover:-translate-y-0.5 hover:brightness-110"
+                      >
+                        <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.35)_0%,transparent_58%)] opacity-85" />
+                        <span className="relative">Sell Your Startup</span>
+                      </button>
+                    </div>
+                  </div>
                   <h1 className={`${isLight ? "text-[#0f172a]" : "text-gray-100"} mx-auto mt-4 max-w-[980px] text-[clamp(1.95rem,3.9vw,3.35rem)] font-bold leading-[1.08] tracking-[-0.02em]`}>
                     The database of verified startup revenues
                   </h1>
@@ -1039,6 +1666,8 @@ export default function App() {
                         setSelectedStartup(null);
                         setSelectedCategory(null);
                         setIsAdvertisePage(false);
+                        setIsSellStartupPage(false);
+                        setIsBuyStartupsPage(false);
                         setIsAddStartupPage(true);
                         window.location.hash = "add-startup";
                       }}
@@ -1060,10 +1689,12 @@ export default function App() {
                     ))}
                   </nav>
                 </section>
-
-                <Section title="Recently listed" items={recentlyListed} onSelectStartup={openStartup} />
-                <Section title="Best deals this week" items={bestDeals} onSelectStartup={openStartup} />
+                <PodiumSection rows={leaderboard} />
                 <LeaderboardTable rows={leaderboard} onSelectStartup={openStartup} />
+                <div id="home-marketplace">
+                  <Section title="Recently listed" items={recentlyListed} onSelectStartup={openStartup} />
+                </div>
+                <Section title="Best deals this week" items={bestDeals} onSelectStartup={openStartup} />
               </>
             )}
 
@@ -1075,14 +1706,21 @@ export default function App() {
               onSelectCategory={(category) => {
                 setSelectedStartup(null);
                 setIsAddStartupPage(false);
-                setIsAdvertisePage(false);
+    setIsAdvertisePage(false);
+    setIsSellStartupPage(false);
+    setIsBuyStartupsPage(false);
                 setSelectedCategory(category);
               }}
             />
           </main>
 
           <aside className="order-3 grid gap-2.5 sm:grid-cols-2 lg:sticky lg:top-2 lg:max-h-[calc(100vh-1rem)] lg:grid-cols-1 lg:overflow-hidden">
-            {rightFeatures.map((feature) => (
+            <div className="sm:col-span-2 lg:col-span-1">
+                <p className="rounded-xl border border-[#3b4f74]/80 bg-[linear-gradient(110deg,rgba(22,33,52,0.85)_0%,rgba(13,22,36,0.88)_100%)] px-3 py-2 text-center text-[10px] font-semibold tracking-[0.08em] text-[#9fbef0] shadow-[inset_0_0_0_1px_rgba(151,187,245,0.12)]">
+                  SPONSORS OF THE DAY
+                </p>
+              </div>
+            {rightFeatures.map((feature, index) => (
               <SidebarCard
                 key={feature.title}
                 title={feature.title}
@@ -1090,6 +1728,8 @@ export default function App() {
                 tone={feature.tone}
                 icon={feature.icon}
                 rotations={feature.rotations}
+                disableAutoFlip
+                flipSignal={activeSponsorTile === leftFeatures.length + index ? sponsorFlipStep : undefined}
                 onSelect={(entry) => openStartup(entry)}
               />
             ))}
@@ -1102,51 +1742,6 @@ export default function App() {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

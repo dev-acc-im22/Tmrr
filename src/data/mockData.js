@@ -1,4 +1,4 @@
-﻿export const topLinks = [
+export const topLinks = [
   "Gmail",
   "CORE",
   "GD",
@@ -25,7 +25,7 @@ export const leftFeatures = [
   {
     title: "Hugo AI",
     desc: "Automate support. Ship faster.",
-    tone: "bg-[#243A52] border-[#3E5D82]",
+    tone: "bg-[linear-gradient(135deg,#2d4768_0%,#263f5c_55%,#20334a_100%)] border-[#4e7097]",
     icon: "spark",
     rotations: [
       { title: "QueuePilot", desc: "Inbox triage on autopilot.", icon: "trend" },
@@ -35,28 +35,28 @@ export const leftFeatures = [
   {
     title: "Rank Press",
     desc: "AI content for authority rankings.",
-    tone: "bg-[#4B3A2A] border-[#6E5640]",
+    tone: "bg-[linear-gradient(135deg,#5c4731_0%,#4f3f2e_56%,#3f3124_100%)] border-[#7f664a]",
     icon: "trend",
     rotations: [{ title: "FormMint", desc: "Smart forms that convert.", icon: "dot" }],
   },
   {
     title: "Brand.dev",
     desc: "Brand personalization API.",
-    tone: "bg-[#4A2B55] border-[#6D457F]",
+    tone: "bg-[linear-gradient(135deg,#5b3768_0%,#4c3058_56%,#3d2648_100%)] border-[#7c5590]",
     icon: "dot",
     rotations: [{ title: "LoopDock", desc: "Retention loops for SaaS.", icon: "cloud" }],
   },
   {
     title: "xCloud",
     desc: "Cloud hosting for modern builders.",
-    tone: "bg-[#24445E] border-[#3A6488]",
+    tone: "bg-[linear-gradient(135deg,#2f5575_0%,#274a66_56%,#213b53_100%)] border-[#4a759c]",
     icon: "cloud",
     rotations: [{ title: "SnapLedger", desc: "Auto-bookkeeping in one click.", icon: "bars" }],
   },
   {
     title: "Claw Patrol",
     desc: "AI agents that ship products.",
-    tone: "bg-[#5A2F35] border-[#7E4952]",
+    tone: "bg-[linear-gradient(135deg,#6a3a43_0%,#5a333b_56%,#4a2b32_100%)] border-[#8c5a64]",
     icon: "bug",
     rotations: [{ title: "AutoNudge", desc: "Follow-ups without the grind.", icon: "spark" }],
   },
@@ -66,28 +66,28 @@ export const rightFeatures = [
   {
     title: "DevBox",
     desc: "Idea to production, autonomous.",
-    tone: "bg-[#243A52] border-[#3E5D82]",
+    tone: "bg-[linear-gradient(135deg,#2d4768_0%,#263f5c_55%,#20334a_100%)] border-[#4e7097]",
     icon: "box",
     rotations: [{ title: "LeadPatch", desc: "Patch leaks in your funnel.", icon: "shield" }],
   },
   {
     title: "Insight Analytics",
     desc: "AI-powered stock insights.",
-    tone: "bg-[#274A64] border-[#3F6A8E]",
+    tone: "bg-[linear-gradient(135deg,#2f5c7e_0%,#2a4f6c_56%,#233f58_100%)] border-[#4f7fa5]",
     icon: "bars",
     rotations: [{ title: "SyncHarbor", desc: "Unify metrics across tools.", icon: "box" }],
   },
   {
     title: "GojiberryAI",
     desc: "Find leads and book calls.",
-    tone: "bg-[#61343B] border-[#85515A]",
+    tone: "bg-[linear-gradient(135deg,#713f48_0%,#603640_56%,#4f2d35_100%)] border-[#96616c]",
     icon: "seed",
     rotations: [{ title: "PromptNest", desc: "Prompt libraries for teams.", icon: "seed" }],
   },
   {
     title: "Chargeback.io",
     desc: "Chargeback prevention on autopilot.",
-    tone: "bg-[#2D3C73] border-[#475E9C]",
+    tone: "bg-[linear-gradient(135deg,#36498b_0%,#2f4178_56%,#273565_100%)] border-[#5b72bb]",
     icon: "shield",
     rotations: [{ title: "MetricBloom", desc: "Realtime KPI blooms.", icon: "bars" }],
   },
@@ -222,6 +222,7 @@ export const leaderboard = combined.slice(0, 100).map((row, idx) => ({
   category: row.category || inferCategory(`${row.startup} ${row.startupTag}`),
   forSale: Boolean(row.forSale),
 }));
+
 
 
 

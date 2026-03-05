@@ -1,4 +1,4 @@
-﻿import {
+import {
   BadgeCheck,
   Box,
   Bug,
@@ -29,12 +29,12 @@ function TileFace({ tone, entry }) {
   return (
     <article className={`min-h-[74px] overflow-hidden rounded-xl border p-2.5 shadow-panel ${tone}`}>
       <div className="flex items-center gap-2.5">
-        <span className="grid h-7 w-7 shrink-0 place-content-center rounded-full border border-white/20 bg-black/15">
-          <Icon size={14} strokeWidth={1.7} className="text-blue-300" />
+        <span className="grid h-7 w-7 shrink-0 place-content-center rounded-full border border-white/28 bg-black/25">
+          <Icon size={14} strokeWidth={1.7} className="text-[#cfe2ff]" />
         </span>
-        <h4 className="truncate text-[12px] font-bold leading-none tracking-tight text-gray-100">{entry.title}</h4>
+        <h4 className="truncate text-[12px] font-bold leading-none tracking-tight text-white">{entry.title}</h4>
       </div>
-      <p className="mt-1 truncate text-[8px] leading-[1.2] text-gray-400">{entry.desc}</p>
+      <p className="mt-1 truncate text-[9px] leading-[1.25] text-[#d5e0f6]/90">{entry.desc}</p>
     </article>
   );
 }
@@ -46,6 +46,8 @@ export default function SidebarCard({
   tone = "bg-card border-line",
   icon = "box",
   rotations = [],
+  flipSignal,
+  disableAutoFlip = false,
   onSelect,
   onAdvertise,
 }) {
@@ -71,7 +73,24 @@ export default function SidebarCard({
   const [flipping, setFlipping] = useState(false);
 
   useEffect(() => {
-    if (entries.length < 2) return;
+    if (entries.length < 2 || flipSignal === undefined) return;
+
+    setFlipping(true);
+    const mid = setTimeout(() => {
+      setCurrent((prev) => (prev + 1) % entries.length);
+    }, 240);
+    const end = setTimeout(() => {
+      setFlipping(false);
+    }, 520);
+
+    return () => {
+      clearTimeout(mid);
+      clearTimeout(end);
+    };
+  }, [flipSignal, entries.length]);
+
+  useEffect(() => {
+    if (entries.length < 2 || flipSignal !== undefined || disableAutoFlip) return;
 
     const interval = setInterval(() => {
       setFlipping(true);
@@ -89,7 +108,7 @@ export default function SidebarCard({
     }, 3600);
 
     return () => clearInterval(interval);
-  }, [entries.length]);
+  }, [entries.length, flipSignal, disableAutoFlip]);
 
   const currentEntry = entries[current];
   const nextEntry = entries[(current + 1) % entries.length];
@@ -110,4 +129,7 @@ export default function SidebarCard({
     </button>
   );
 }
+
+
+
 
